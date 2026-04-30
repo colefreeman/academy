@@ -1,0 +1,13 @@
+config:
+  account: null
+  database: null
+  disable_double_quotes: null
+  password: null
+  role: null
+  schema: null
+  username: null
+  warehouse: null
+  private_key_file: null
+  private_key_file_pwd: null
+  use_batch_load: true
+destination: snowflake

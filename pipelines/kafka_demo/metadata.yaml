@@ -1,0 +1,111 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - transform_kafka_data
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: yaml
+  name: fetch kafka data
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: fetch_kafka_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - kafak_data_exporter
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: transform kafka data
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - fetch_kafka_data
+  uuid: transform_kafka_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - energetic_firefly
+  - enigmatic_paladin
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: yaml
+  name: kafak data exporter
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - transform_kafka_data
+  uuid: kafak_data_exporter
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: yaml
+  name: enigmatic paladin
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - kafak_data_exporter
+  uuid: enigmatic_paladin
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: yaml
+  name: energetic firefly
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - kafak_data_exporter
+  uuid: energetic_firefly
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-10-20 17:59:44.933517+00:00'
+created_by: freem124
+data_integration: null
+description: 'Kafka demo '
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: Kafka demo
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: streaming
+uuid: kafka_demo
+variables_dir: /home/src/mage_data/academy
+widgets: []

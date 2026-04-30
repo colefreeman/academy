@@ -1,0 +1,76 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: microsoft_fabric
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/custom/query_fabric_data.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: query_fabric_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: query_fabric_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: microsoft_fabric
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: fabric test 2
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks: []
+  uuid: fabric_test_2
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2026-03-04 19:52:28.664110+00:00'
+created_by: admin
+data_integration: null
+description: Demo Microsoft Fabric Integration
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions:
+  great_expectations:
+    blocks: []
+name: fabric_demo
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: fabric_demo
+variables_dir: /home/src/mage_data/academy
+widgets: []

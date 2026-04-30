@@ -1,0 +1,3 @@
+-- INSERT test data
+-- INSERT INTO users_test (id, name, email, age) VALUES 
+-- (80, 'John Doe', 'john.doe@example.com', 30);

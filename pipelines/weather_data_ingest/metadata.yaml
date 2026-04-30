@@ -1,0 +1,87 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file: {}
+    file_source: {}
+  downstream_blocks:
+  - normalize_weather_data_792
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: Fetch Weather Data
+  retry_config: null
+  status: failed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: fetch_weather_data_792
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file: {}
+    file_source: {}
+  downstream_blocks:
+  - write_to_bigquery_792
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: Normalize Weather Data
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - fetch_weather_data_792
+  uuid: normalize_weather_data_792
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file: {}
+    file_source: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: Write To BigQuery
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - normalize_weather_data_792
+  uuid: write_to_bigquery_792
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-10-06 15:30:34.318986+00:00'
+created_by: freem124
+data_integration: null
+description: The data pipeline fetches real-time weather data from an open weather
+  api, performs transformations such as data cleaning, normalization, and feature
+  extraction, then loads the processed data into bigquery for analytical querying
+  and reporting purposes. this pipeline enables efficient integration of external
+  weather data with existing datasets to support data-driven insights.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: Weather Data Ingest
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: weather_data_ingest
+variables_dir: /home/src/mage_data/academy
+widgets: []

@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: mage_academy
+    schema: Mage_Academy
+    tables:
+      - name: CareGuard_patients
+      - name: HealthPlus_patients
+      - name: MediTrust_patients
+      - name: SecureCare_patients
+      - name: WellnessFirst_patients

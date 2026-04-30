@@ -1,0 +1,18 @@
+config:
+  columns: null
+  headers: null
+  method: GET
+  payload: null
+  query:
+    limit: "1"
+  response_parser: null
+  url: https://api.spacexdata.com/v4/launches
+  encoding: utf-8
+  verify: true
+  pagination_config:
+    type: null
+    cursor_param: null
+    next_cursor_path: null
+    initial_cursor_value: null
+source: api
+catalog: {}

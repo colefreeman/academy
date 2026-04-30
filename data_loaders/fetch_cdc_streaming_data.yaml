@@ -1,0 +1,52 @@
+connector_type: mysql
+
+# Required
+host: 2.tcp.ngrok.io #"{{ mage_secret_var('mysqlcdcHostCole') }}"
+port: 17248
+user: "{{ mage_secret_var('mysqlcdcuserCole') }}"
+password: "{{ mage_secret_var('mysqlcdcPasswordCole') }}"
+
+# Optional
+connect_timeout: 10
+charset: utf8mb4
+
+# SSL (optional)
+# ssl:
+#   ca: "/path/to/ca.pem"
+#   cert: "/path/to/client-cert.pem"
+#   key: "/path/to/client-key.pem"
+
+# Filtering (optional)
+databases: ["ecommerce_cdc"]
+tables: ["inventory"]
+ignore_databases: ["mysql", "information_schema", "performance_schema", "sys"]
+# ignore_tables: ["temp_*", "log_*"]
+
+# Replication
+server_id: 54001
+auto_generate_server_id: true
+
+# Resume (choose one)
+# resume_from_gtids: "uuid:1-100"
+# start_log_file: "mysql-bin.000001"
+# start_log_pos: 1234
+# start_timestamp: 1640995200
+
+# Events
+include_ddl: false
+include_heartbeat: true
+include_transaction_events: true
+include_gtid_events: true
+include_rotate_events: false
+include_intvar_events: true
+include_load_query_events: true
+include_table_map_events: true
+
+# Performance
+heartbeat_seconds: 1.0
+blocking: true
+max_batch_size: 100
+flush_interval_seconds: 1.0
+
+# Advanced
+return_db_records_only: true

@@ -1,0 +1,80 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - compound_transform_data
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: compound fetch data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: compound_fetch_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - stylish_merchant
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: compound transform data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - compound_fetch_data
+  uuid: compound_transform_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: stylish merchant
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - compound_transform_data
+  uuid: stylish_merchant
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2026-02-13 18:36:16.770994+00:00'
+created_by: freem124
+data_integration: null
+description: Build your own custom data pipeline from a blank canvas.
+execution_framework: standard
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: compounding work product
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: compounding_work_product
+variables:
+  TOP_N: 3
+variables_dir: /home/src/mage_data/academy
+widgets: []

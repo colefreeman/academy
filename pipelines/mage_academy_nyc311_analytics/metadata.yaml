@@ -1,0 +1,160 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: true
+    export_write_policy: append
+    file:
+      path: /home/src/academy/data_loaders/silver_nyc311_analytics.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks:
+  - nyc311_location_dim
+  - nyc311_agency_dim
+  - nyc311_complaint_dim
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: Silver NYC311 Analytics
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: silver_nyc311_analytics
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/transformers/nyc311_location_dim.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks:
+  - nyc311_fact
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: nyc311 location dim
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - silver_nyc311_analytics
+  uuid: nyc311_location_dim
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/transformers/nyc311_agency_dim.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks:
+  - nyc311_fact
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: nyc311 agency dim
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - silver_nyc311_analytics
+  uuid: nyc311_agency_dim
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/transformers/nyc311_complaint_dim.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks:
+  - nyc311_fact
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: nyc311 complaint dim
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - silver_nyc311_analytics
+  uuid: nyc311_complaint_dim
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: true
+    export_write_policy: append
+    file:
+      path: /home/src/academy/transformers/nyc311_fact.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python_force
+  has_callback: false
+  language: sql
+  name: nyc311 fact
+  retry_config: {}
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - nyc311_complaint_dim
+  - nyc311_agency_dim
+  - nyc311_location_dim
+  uuid: nyc311_fact
+cache_block_output_in_memory: true
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-10-03 19:03:15.409330+00:00'
+created_by: freem124
+data_integration: null
+description: ''
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: Mage Academy NYC311 Analytics
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: mage_academy_nyc311_analytics
+variables_dir: /home/src/mage_data/academy
+widgets: []

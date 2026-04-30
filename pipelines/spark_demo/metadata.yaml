@@ -1,0 +1,117 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file:
+      path: /home/src/academy/data_loaders/fetch_binance_data.py
+  downstream_blocks:
+  - transform_binance_data_spark
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: fetch binance data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: fetch_binance_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file:
+      path: /home/src/academy/transformers/transform_binance_data_spark.py
+  downstream_blocks:
+  - export_binance_data_bigquery
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: transform binance data spark
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - fetch_binance_data
+  uuid: transform_binance_data_spark
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - sql_transform
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: export binance data bigquery
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - transform_binance_data_spark
+  uuid: export_binance_data_bigquery
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: green wizard
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - sql_transform
+  uuid: green_wizard
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: transformers/sql_transform.sql
+  downstream_blocks:
+  - green_wizard
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: sql_transform
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - export_binance_data_bigquery
+  uuid: sql_transform
+cache_block_output_in_memory: true
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-10-08 16:24:57.746570+00:00'
+created_by: freem124
+data_integration: null
+description: Build your own custom data pipeline from a blank canvas.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: Spark demo
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: true
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: spark_demo
+variables_dir: /home/src/mage_data/academy
+widgets: []

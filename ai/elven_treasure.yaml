@@ -1,0 +1,20 @@
+prompt: Map column names based on documentation 
+# output:
+#   # If you want the AI output to be structured,
+#   # define the keys and the data type for each key:
+#   # - number
+#   # - string
+#   # - boolean
+#   # - array
+#   # - object
+#   # Learn more: https://docs.mage.ai/ai/blocks
+#   format:
+#     property_key_name:
+#       type: property_value_type
+#       description: property_description
+#       enum: []
+#       items: []
+#       minItems: property_min_items
+#       maxItems: property_max_items
+#       oneOf:
+#         - type: property_value_type

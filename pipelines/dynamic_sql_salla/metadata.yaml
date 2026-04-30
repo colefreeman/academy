@@ -1,0 +1,120 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dynamic:
+      parent: true
+    file:
+      path: /home/src/academy/data_loaders/fetch_medical_data.py
+  downstream_blocks:
+  - medical_to_bq
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: fetch medical data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: fetch_medical_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file:
+      path: /home/src/academy/data_exporters/medical_to_bq.py
+  downstream_blocks:
+  - salla_silver_layer
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: medical to bq
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - fetch_medical_data
+  uuid: medical_to_bq
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/transformers/salla_silver_layer.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks:
+  - salla_gold_layer
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: salla silver layer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - medical_to_bq
+  uuid: salla_silver_layer
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/transformers/salla_gold_layer.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: salla gold layer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - salla_silver_layer
+  uuid: salla_gold_layer
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2026-04-16 15:22:50.412438+00:00'
+created_by: freem124
+data_integration: null
+description: Build your own custom data pipeline from a blank canvas.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions:
+  great_expectations:
+    blocks: []
+name: dynamic sql salla
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: dynamic_sql_salla
+variables_dir: /home/src/mage_data/academy
+widgets: []

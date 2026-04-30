@@ -1,0 +1,83 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dynamic:
+      parent: true
+  downstream_blocks:
+  - transform_dynamic_data
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: fetch dynamic data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: fetch_dynamic_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dynamic:
+      parent: false
+  downstream_blocks:
+  - export_dynamic_data
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: transform dynamic data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - fetch_dynamic_data
+  uuid: transform_dynamic_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dynamic:
+      reduce_output: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: export dynamic data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - transform_dynamic_data
+  uuid: export_dynamic_data
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2026-02-12 14:37:25.524770+00:00'
+created_by: freem124
+data_integration: null
+description: Build your own custom data pipeline from a blank canvas.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: dynamic block demo
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: dynamic_block_demo
+variables_dir: /home/src/mage_data/academy
+widgets: []

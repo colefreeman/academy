@@ -1,0 +1,45 @@
+connector_type: postgres
+
+# Required
+host: 4.tcp.ngrok.io
+port: 17986  
+database: ecommerce_db
+user: mage_replication
+password: "mage123"
+
+# Optional
+connect_timeout: 10
+
+# SSL (optional)
+# ssl:
+#   sslmode: "require"
+#   sslcert: "/path/to/client-cert.pem"
+#   sslkey: "/path/to/client-key.pem"
+#   sslrootcert: "/path/to/ca.pem"
+
+# Filtering (optional)
+schemas: ["sales"]
+tables: ["orders"]
+# ignore_schemas: ["pg_catalog", "information_schema"]
+# ignore_tables: ["temp_*", "log_*"]
+
+# Replication
+replication_slot: mage_slot
+publication_name: mage_cdc_publication
+# Resume from specific LSN (optional)
+# start_lsn: "0/1234567"
+
+# Performance
+max_batch_size: 100
+flush_interval_seconds: 1.0
+keep_alive_time: 10.0
+
+# Heartbeat table
+# Updates a single row periodically to prevent WAL log filling
+# Set both heartbeat_table_schema and heartbeat_table_name to enable
+# heartbeat_table_schema: public
+# heartbeat_table_name: cdc_status
+# heartbeat_interval_seconds: 60.0
+
+# Return clean records with Mage timestamps
+return_db_records_only: true

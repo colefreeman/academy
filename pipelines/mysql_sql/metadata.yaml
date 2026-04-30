@@ -1,0 +1,52 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: mysql
+    data_provider_profile: mysql_cdc
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/custom/insert_rows.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: insert_rows
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: insert_rows
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-10-23 22:26:07.642088+00:00'
+created_by: admin
+data_integration: null
+description: ''
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: MySQL SQL
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: mysql_sql
+variables_dir: /home/src/mage_data/academy
+widgets: []

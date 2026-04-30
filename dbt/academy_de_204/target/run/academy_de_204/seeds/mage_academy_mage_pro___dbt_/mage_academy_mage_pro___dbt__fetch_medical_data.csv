@@ -1,0 +1,13 @@
+
+    
+    
+    
+    create table "dev"."main"."mage_academy_mage_pro___dbt__fetch_medical_data" ("patient_id" text,"name" text,"ssn" text,"address" text,"insurance_provider" text,"dob" date,"diastolic_bp" integer,"systolic_bp" integer,"pulse" integer,"height" float8,"weight" float8,"age" integer,"age_score" integer,"bp_score" integer,"pulse_score" integer,"bmi_score" integer,"health_score" integer)
+  ;
+    -- dbt seed --
+    
+          COPY "dev"."main"."mage_academy_mage_pro___dbt__fetch_medical_data" FROM '/home/src/academy/dbt/academy_de_204/seeds/mage_academy_mage_pro___dbt_/mage_academy_mage_pro___dbt__fetch_medical_data.csv' (FORMAT CSV, HEADER TRUE, DELIMITER ',')
+        
+
+;
+  

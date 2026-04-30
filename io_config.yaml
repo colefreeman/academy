@@ -2,11 +2,6 @@
 #
 # This file stores credentials and connection information for data sources.
 #
-# SECURITY BEST PRACTICES:
-# - Never commit this file with real credentials to version control
-# - Use environment variables or secret managers (Mage, AWS, Azure, Google, HashiCorp Vault)
-# - https://docs.mage.ai/development/io_config_setup#3-using-variables-and-secrets
-#
 # For more information: https://docs.mage.ai/development/io_config_setup
 version: 0.1.1
 default:
@@ -25,17 +20,21 @@ default:
   ALGOLIA_INDEX_NAME: index_name
 
   # Azure
-  AZURE_CLIENT_ID: "{{ env_var('AZURE_CLIENT_ID') }}"
-  AZURE_CLIENT_SECRET: "{{ env_var('AZURE_CLIENT_SECRET') }}"
+  AZURE_CLIENT_ID: "{{ mage_secret_var('azure_client_id') }}"
+  AZURE_CLIENT_SECRET: "{{ mage_secret_var('azure_client_secret') }}"
   AZURE_DATABRICKS_ACCESS_TOKEN: "{{ env_var('AZURE_DATABRICKS_ACCESS_TOKEN') }}"
   AZURE_DATABRICKS_WORKSPACE_NAME: "{{ env_var('AZURE_DATABRICKS_WORKSPACE_NAME') }}"
   AZURE_STORAGE_ACCOUNT_NAME: "{{ env_var('AZURE_STORAGE_ACCOUNT_NAME') }}"
   AZURE_SUBSCRIPTION_ID: "{{ env_var('AZURE_SUBSCRIPTION_ID') }}"
-  AZURE_TENANT_ID: "{{ env_var('AZURE_TENANT_ID') }}"
+  AZURE_TENANT_ID: "{{ env_var('azure_tenant_id') }}"
   AZURE_FUNCTION_APP: "{{ env_var('AZURE_FUNCTION_APP') }}"
   AZURE_FUNCTION_URL_CODE: "{{ env_var('AZURE_FUNCTION_URL_CODE') }}"
   AZURE_RESOURCE_GROUP: "{{ env_var('AZURE_RESOURCE_GROUP') }}"
   POWER_BI_WORKSPACE_ID: "{{ env_var('POWER_BI_WORKSPACE_ID') }}"
+
+
+  MICROSOFT_FABRIC_WAREHOUSE_NAME: "{{ mage_secret_var('fabric_warehouse_name') }}"
+  MICROSOFT_FABRIC_WAREHOUSE_ENDPOINT: "{{ mage_secret_var('fabric_warehouse_endpoint') }}"
 
   # Chroma
   CHROMA_COLLECTION: collection_name
@@ -72,15 +71,15 @@ default:
   # Google
   GOOGLE_SERVICE_ACC_KEY:
     type: service_account
-    project_id: project-id
-    private_key_id: key-id
-    private_key: "-----BEGIN PRIVATE KEY-----\nyour_private_key\n-----END_PRIVATE_KEY"
-    client_email: your_service_account_email
+    project_id: lyrical-drive-439810-j7
+    private_key_id: 2caf7a23baca12b110ed603fd69a54b7f549f1a4
+    private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDbdRtoPymH4Gqx\nDuQGbfnPkm7zbrK9gxwuqMCP08d+WGGV2HTh8hgnfzzSy9RZYz+6zzZk/YbmTfho\naqbYerUpz1ibcZY5TKQG7r8rvz8DlVcl2YB7JOzuUm/UEnOVtMfng3SRDmHwBYCe\nGdN/TrWV447c/8GCdZddv6ayeRZ6QJJUYTI2nWY71hNMx16VmQg9sOB2TzkJoFN5\nblGaEaTmQZemmn7AqWZWLFF7OeZYJ8FU7HuoQxu+bZyPDdjU0QzCYnwE++D3o7x1\nf+MyiOl6n22Z34kcWERf0hWSpmv+mAORJ7B9tMhrJ9qpSP312TKYy/+iyuvXbjzh\nVREKgw0JAgMBAAECggEAARW/IPDO/8D4Rg/QyMdaaNBMhB+T+qPfS8vBx/RAFDvT\nn64GReewfuF+J3yifB6lfgLwPeeS9yiDheChGojgxGgmA/63w2jBltcvUsQLR7VB\nTQqaPAGeuj7mFqJQt/jA1EAuH1l22nzsedue1A5Lj4Ykeqs5BbAXI3uDE3bNyaTt\nvBDctY+e7tnjxRaaFLe52xYvKQjzpvOzQ8a92VTKTOe0sHhVJ/uHN7nmeOg47uO/\nOQ3hZwFviLnZX+zp3iL+wlswtPcmtT1llspJdyNQxiI2TIRXKdQ/ngiI7Yo9pdro\nN4SVXmKGLcW6axD3PzSkc6LbRlwHKhJ5bUZZctJKEQKBgQDzuU80yrL1gsw39dLN\nUHMyYiQbWyRGTwONO8SOY+ATQv6jfJnjeawanQmi+dMKdepmfEoh+LUa4aZwGJGD\njOVbaY/OTx0nwroBgLzrbjQeY8cyIKw/azjlsICsQSYCdR3gTeNJwXgHhWZDcJcT\nhQxeLfQLEa3IJuDf3qE7SohNCwKBgQDmguUhbtDEGl0ehH0gB6u0B8PiKuG2wXHv\nvah6dnqNI0Gxp51YqGyLha8qtQBE4bPI1JoWnYKD5SqmUemImWlnln4V4jqixjaB\n62DKZOY+4eragJitHQtDmRMFtCI9Nt2i7U0uqVvpv+ddtHDg0tznKQUQDOyHKoRH\nFdeb75gSuwKBgQCwntjkdAQuYOQnpZBnU2a322E5JdpqzTXQssBlQ8GNk94+kbxf\nmbv76VOjdJHYoc0FCgsbBUYRPfdEgrlo8MEBdsVNCA4j0zzCfA3sOwewAjTHgd/x\ncX1hDoCg0/F8lGzbMPaGa5rVMHoEY2JINgHZeknBf8VFJ8+MzKRg+ElAMwKBgBhf\n6v64CxdReltJwzlp1jw5PfticW+z0Op68Z/Re3AFNGMmyDqhxKiUQEuRzC98dlhc\nMtcFXNG5n+LqcnlhT4YGodqKi4y+zPC8BQYh2T75AK6OPpa/pXtGan6F58D1VkZu\nNWUjv3ZeNobwF6eOZJGFAuYJl9FLK6Wgp6Xzle8VAoGBAJazVR7yiX21KyCuywG/\n11ALSMykz4xIekqe8GxGarZm8q2dfpIn5zF2pqNA/WyWIQywtFzXcmd6jlwNUtbF\na28ll0onV90upBJbg7YXb0hxNtbGHlFkKAldvJRMqJb/PwlPOQCaPk6dqOaYAMSB\nZfoh+8vlsNRjNzdxaiPssl7K\n-----END PRIVATE KEY-----\n"
+    client_email: lyrical-drive-439810-j7@appspot.gserviceaccount.com
     auth_uri: "https://accounts.google.com/o/oauth2/auth"
     token_uri: "https://accounts.google.com/o/oauth2/token"
     auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
     client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/your_service_account_email"
-  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/path/to/your/service/account/key.json"
+  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/academy/google_credential_storage.json"
   GOOGLE_LOCATION: US # Optional
 
   # MongoDB

@@ -1,0 +1,61 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - galvanized_omega
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: yaml
+  name: cosmic mirage
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: cosmic_mirage
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: yaml
+  name: galvanized omega
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - cosmic_mirage
+  uuid: galvanized_omega
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-10-16 14:16:50.613044+00:00'
+created_by: freem124
+data_integration: null
+description: Sync data between APIs, databases, and other sources.
+execution_framework: standard
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: test overwrite
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: integration
+uuid: test_overwrite
+variables_dir: /home/src/mage_data/academy
+widgets: []

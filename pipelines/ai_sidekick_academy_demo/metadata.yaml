@@ -1,0 +1,74 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: blue
+  configuration:
+    file:
+      path: /home/src/academy/data_loaders/fetch_iris_dataset.py
+    file_source: {}
+  downstream_blocks:
+  - renewed_ronin
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: python
+  name: Fetch Iris Dataset
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: fetch_iris_dataset
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: microsoft_fabric
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file:
+      path: /home/src/academy/transformers/renewed_ronin.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: k8s
+  has_callback: false
+  language: sql
+  name: renewed ronin
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - fetch_iris_dataset
+  uuid: renewed_ronin
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2026-03-03 17:05:45.118889+00:00'
+created_by: freem124
+data_integration: null
+description: Build your own custom data pipeline from a blank canvas.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions:
+  great_expectations:
+    blocks: []
+name: AI Sidekick academy demo
+notification_config: {}
+overrides: null
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+state_store_config: {}
+tags: []
+type: python
+uuid: ai_sidekick_academy_demo
+variables_dir: /home/src/mage_data/academy
+widgets: []

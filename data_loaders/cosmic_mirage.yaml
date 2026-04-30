@@ -1,0 +1,13 @@
+config:
+  database: null
+  host: null
+  port: 3306
+  username: null
+  password: null
+  connection_method: direct
+  ssh_host: null
+  ssh_port: 22
+  ssh_username: null
+  ssh_password: null
+  ssh_pkey: null
+source: mysql

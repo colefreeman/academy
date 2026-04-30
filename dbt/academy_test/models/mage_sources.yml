@@ -1,0 +1,14 @@
+sources:
+- description: Dataframes Mage upstream blocks
+  loader: mage
+  name: mage_academy_test
+  schema: Mage_Academy
+  tables:
+  - description: Dataframe for block `medical_to_bq` of the `dynamic_dbt_salla` mage
+      pipeline.
+    identifier: mage_dynamic_dbt_salla_medical_to_bq
+    meta:
+      block_uuid: medical_to_bq
+      pipeline_uuid: dynamic_dbt_salla
+    name: dynamic_dbt_salla_medical_to_bq
+version: 2

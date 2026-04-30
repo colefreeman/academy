@@ -20,3 +20,4 @@ logs/
 mage-ai.db
 mage_data/
 secrets/
+google_credential_storage.json

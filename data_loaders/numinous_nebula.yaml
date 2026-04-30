@@ -1,0 +1,5 @@
+config:
+  token: null
+  base_id: null
+  table_name: null
+source: airtable
